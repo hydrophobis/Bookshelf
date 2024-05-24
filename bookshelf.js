@@ -8,7 +8,14 @@ class Page {
   searchPage(data){
     return pageData.indexOf(data) !== -1;
   }
+
+  
 }
+
+
+
+
+
 
 class Book {
   constructor(title = "Untitled", author = "Unknown") {
@@ -39,11 +46,64 @@ class Book {
   title(){
     return this.title;
   }
+
+    // Adds a new book
+  pushPage(page) {
+    if (page instanceof Page) {
+      this.pages.push(page);
+      return true; // Return true if book is added successfully
+    } else {
+      console.error("Only instances of Page can be added.");
+      return false; // Return false if fail
+    }
+  }
+
+  // Removes the last book
+  popPage() {
+    if (this.pages.length > 0) {
+      return this.pages.pop();
+    } else {
+      console.error("No pages to remove.");
+      return null;
+    }
+  }
+
+  // Inserts a book at a specific position
+  insertPage(page, position) {
+    if (!(page instanceof Page)) {
+      console.error("Only instances of Page can be added.");
+      return false; // Return false if book addition fails
+    }
+
+    if (position < 1 || position > this.pages.length + 1) {
+      console.error("Position out of bounds.");
+      return false; // Return false if position is out of bounds
+    }
+
+    this.books.splice(position - 1, 0, page);
+    return true; // Return true if book is inserted successfully
+  }
+
+  // Returns all books on the shelf, or when specified, only books with a specific title
+  viewPages(titleFilter = null) {
+    if (!titleFilter) {
+      return this.pages.map((book, index) => `${pageNumber}: ${pageData}`);
+    } else {
+      return this.pages
+        .filter((page) => page.title === titleFilter)
+        .map((page, index) => `${pageNumber}: ${pageData}`);
+    }
+  }
 }
 
+
+
+
+
+
 class Shelf {
-  constructor() {
-    this.books = [];
+  constructor(books = []) {
+    this.books = books;
   }
 
   // Adds a new book
