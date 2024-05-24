@@ -10,6 +10,7 @@ Pages, hold an array of data
 Usage:
 Page:
 Constructor args, pageNumber(default -1), data(default null), pageLength(length of the pages array, default 10)
+
 searchPage(term), returns 0 or 1 depending on whether or not the page contains <term>
 
 Book:
