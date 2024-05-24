@@ -28,8 +28,11 @@ class Book {
   access(book, author){
      if(book.author == author){
        return true;
-     }
+     } else if (author == "Unknown"){
       return false;
+     } else {
+       return "unknown";
+     }
   }
 
   newPage(number, data, pageLength){
