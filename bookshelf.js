@@ -41,14 +41,6 @@ class Book {
     return page;
   }
 
-  addPage(page){
-    if(!page instanceof Page){
-      return -1;
-    }
-    pages.push(page);
-    return 0;
-  }
-
   author(){
     return this.author;
   }
