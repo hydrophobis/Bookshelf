@@ -25,6 +25,13 @@ class Book {
 
   let pages = [];
 
+  access(book, author){
+     if(book.author == author){
+       return true;
+     }
+      return false;
+  }
+
   newPage(number, data, pageLength){
     let page = new Page(number, data, pageLength); 
     pages.push(page);
